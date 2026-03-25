@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Plant AI</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+
+<button id="themeToggle" class="toggle-btn">🌙</button>
+
+<div class="main-container">
+
+  <div class="side-panel">
+    <h3>Insights</h3>
+    <img src="assets/accuracy.png">
+    <img src="assets/loss.png">
+  </div>
+
+  <div class="center-panel">
+
+    <h1>AI Plant Disease Detector</h1>
+
+    <select id="language">
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="bn">Bengali</option>
+    </select>
+
+    <input type="file" id="fileInput">
+    <button onclick="predict()">Analyze</button>
+
+    <img id="preview" class="preview hidden">
+
+    <div id="result" class="card hidden">
+      <h2 id="disease"></h2>
+      <p id="confidence"></p>
+      <p id="remedy"></p>
+      <p id="explanation"></p>
+
+      <button onclick="downloadPDF()">Download Report</button>
+    </div>
+
+    <div class="card">
+      <h3>Analytics</h3>
+      <p>Total: <span id="total"></span></p>
+      <p>Healthy: <span id="healthy"></span></p>
+      <p>Diseased: <span id="diseased"></span></p>
+    </div>
+
+  </div>
+
+  <div class="side-panel">
+    <h3>Performance</h3>
+    <img src="assets/confusion.png">
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
