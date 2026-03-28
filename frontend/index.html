@@ -2,67 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title> Plant AI</title>
-
+  <title>Plant AI</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-
-  <!-- jsPDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
-
-<body>
-
-<button id="themeToggle" class="toggle-btn">🌙</button>
-
-<div class="main-container">
-
-  <div class="side-panel">
-    <h3>Insights</h3>
-    <img src="assets/accuracy.png">
-    <img src="assets/loss.png">
+<body class="dark">
+<div class="container">
+  <h1>AI Powered Plant Disease Detector</h1>
+   <p class="subtitle">Upload a leaf image to identify potential diseases and get treatment recommendations.</p>
+  <div class="controls">
+<label for="fileInput" class="upload-box">
+    <p>Upload Leaf Image</p>
+</label>
+<input type="file" id="fileInput">
+<div id="preview"></div>
+<div id="result" class="card"></div>
+<p id="fileName"></p>
+<button onclick="analyzeImage()">Analyze with AI</button>
   </div>
-
-  <div class="center-panel">
-
-    <h1>AI Plant Disease Detector</h1>
-
-    <select id="language">
-      <option value="en">English</option>
-      <option value="hi">Hindi</option>
-      <option value="bn">Bengali</option>
-    </select>
-
-    <input type="file" id="fileInput">
-    <button onclick="predict()">Analyze</button>
-
-    <img id="preview" class="preview hidden">
-
-    <div id="result" class="card hidden">
-      <h2 id="disease"></h2>
-      <p id="confidence"></p>
-      <p id="remedy"></p>
-      <p id="explanation"></p>
-
-      <button onclick="downloadPDF()">Download Report</button>
-    </div>
-
-    <div class="card">
-      <h3>Analytics</h3>
-      <p>Total: <span id="total"></span></p>
-      <p>Healthy: <span id="healthy"></span></p>
-      <p>Diseased: <span id="diseased"></span></p>
-    </div>
-
+<div class="stats-strip reveal">
+  <img id="preview" class="preview hidden">
+  <div id="result" class="card hidden">
+    <h2 id="disease"></h2>
+    <p id="confidence"></p>
+    <p id="remedy"></p>
+    <p id="explanation"></p>
+    <button onclick="downloadPDF()">Download Report</button>
   </div>
-
-  <div class="side-panel">
-    <h3>Performance</h3>
-    <img src="assets/confusion.png">
+  <div class="card">
+    <h3>Analytics</h3>
+    <p>Total Analyses: <span id="total"></span></p>
+    <p>Healthy Plants: <span id="healthy"></span></p>
+    <p>Diseased Plants: <span id="diseased"></span></p>
   </div>
-
+  <h2 class="section-title"> Model Insights</h2>
+  <div class="grid">
+    <img src="../outputs/accuracy_plot.png">
+    <img src="../outputs/loss_plot.png">
+  </div>
+  <div class="full-width">
+    <img src="../outputs/confusion_matrix.png">
+  </div>
 </div>
-
+<footer>
+  <p>
+     <strong>PlantAI</strong>`
+    Dataset: <a href="https://www.kaggle.com/datasets/emmarex/plantdisease" target="_blank"
+               style="color:var(--green-600);text-decoration:none">PlantVillage (Kaggle)</a>
+    Model: CNN with 20 Epochs
+  </p>
+  <p style="margin-top:6px;opacity:0.6">
+    For informational use only. Always consult a certified agronomist.
+  </p>
+</footer>
 <script src="script.js"></script>
 </body>
 </html>
